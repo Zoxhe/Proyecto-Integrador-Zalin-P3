@@ -1,0 +1,15 @@
+header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: yellow;
+}
+
+header nav ul {
+    display: flex;
+}
+
+header nav ul li {
+    list-style: none;
+    margin-right: 20px;
+}
