@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import Buscador from '../Buscador/Buscador';
-import Tarjeta from '../Tarjeta/Tarjeta';
+import CancionCard from '../CancionCard/CancionCard';
 
 import './Home.css';
 
@@ -10,7 +10,7 @@ class Home extends Component {
         super(props);
         this.state = {
             topcanciones : [],
-            cnacionesalbum : []
+            cancionesalbum : []
         }
     }
 
@@ -18,8 +18,7 @@ class Home extends Component {
 
         fetch('https://thingproxy.freeboard.io/fetch/https://api.deezer.com/chart/0/tracks&limit=5')
             .then( response => response.json() )
-            .then( datos => {
-                this.setState({
+            .then( datos => { this.setState({
                     topcanciones : datos.data
                 })
 
@@ -29,9 +28,8 @@ class Home extends Component {
 
         fetch('https://thingproxy.freeboard.io/fetch/https://api.deezer.com/album/302127/tracks&limit=5')
             .then( response => response.json() )
-            .then( datos => {
-                this.setState({
-                    cnacionesalbum : datos.data
+            .then( datos => { this.setState({
+                    cancionesalbum : datos.data
                 })
 
                 console.log(datos.data);
@@ -47,10 +45,9 @@ class Home extends Component {
 
                 <a href="">Ver todas</a>
                 <section className="canciones">
-                    {
-                        this.state.topcanciones.map( (cancion, indice) => {
-                            return(
-                                <Tarjeta key={indice} cover={cancion.album.cover_medium} title={cancion.title} artist_name={cancion.artist.name} />
+                    {this.state.topcanciones.map( (cancion, indice) => {
+                        return(
+                            <CancionCard key={indice} cover={cancion.album.cover_medium} title={cancion.title} artist_name={cancion.artist.name} />
                             )
                         })
                     }
@@ -58,9 +55,9 @@ class Home extends Component {
                 <a href="">Ver todas</a>
                 <section className="canciones_album">
                     {
-                        this.state.cnacionesalbum.map( (cancion, indice) => {
+                        this.state.cancionesalbum.map( (cancion, indice) => {
                             return(
-                                <Tarjeta key={indice} cover={"https://e-cdns-images.dzcdn.net/images/cover/" + cancion.md5_image + "/250x250-000000-80-0-0.jpg"} title={cancion.title} artist_name={cancion.artist.name} />
+                                <CancionCard key={indice} cover={"https://e-cdns-images.dzcdn.net/images/cover/" + cancion.md5_image + "/250x250-000000-80-0-0.jpg"} title={cancion.title} artist_name={cancion.artist.name} />
                             )
                         })
                     }

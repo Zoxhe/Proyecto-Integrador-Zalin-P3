@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import Tarjeta from '../Tarjeta/Tarjeta';
+import Tarjeta from '../CancionCard/CancionCard';
 
 import './Buscador.css';
 
