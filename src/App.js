@@ -1,29 +1,26 @@
 import React from 'react';
-
 import Header from './Components/Header/Header';
 import Home from './Screens/Home/Home';
 import Footer from './Components/Footer/Footer';
+import Favoritos from './Screens/Favoritos/Favoritos';
 import { Route, Switch} from 'react-router-dom';
+import Menu from './Components/Menu/Menu';
 
 
 import './App.css';
 
 function App() {
   return (
-    <body>
-    <div className="App">
-      <Header />
-      <h1>My App in React</h1>
-      <main>
+    <React.Fragment>
+      <Menu />
+      <Switch>
+        <Route path="/" exact = {true} component={Home}/>
+        <Route path="/favoritos" component={Favoritos}/>
+        <Route path="/cancion" component={CancionCard}/> 
         
-      </main>
-
-      <Home />
-      
-      
-      <Footer />
-    </div>
-    </body>
+    </Switch>
+   </React.Fragment>
+    
 
   );
 }
