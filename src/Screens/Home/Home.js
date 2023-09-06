@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
-import Buscador from '../Buscador/Buscador';
-import CancionCard from '../CancionCard/CancionCard';
+import Buscador from '../../Components/Buscador/Buscador';
+import CancionCard from '../../Components/CancionCard/CancionCard';
 
 import './Home.css';
 
