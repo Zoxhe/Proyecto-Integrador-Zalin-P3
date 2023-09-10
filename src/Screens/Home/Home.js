@@ -37,6 +37,7 @@ class Home extends Component {
             .catch( error => console.log(error) )
 
     }
+    
 
     render() {
         return(
@@ -47,7 +48,7 @@ class Home extends Component {
                 <section className="canciones">
                     {this.state.topcanciones.map( (cancion, indice) => {
                         return(
-                            <CancionCard key={indice} cover={cancion.album.cover_medium} title={cancion.title} artist_name={cancion.artist.name} />
+                            <CancionCard key={indice} data={cancion} />
                             )
                         })
                     }
@@ -57,7 +58,7 @@ class Home extends Component {
                     {
                         this.state.cancionesalbum.map( (cancion, indice) => {
                             return(
-                                <CancionCard key={indice} cover={"https://e-cdns-images.dzcdn.net/images/cover/" + cancion.md5_image + "/250x250-000000-80-0-0.jpg"} title={cancion.title} artist_name={cancion.artist.name} />
+                                <CancionCard key={indice} data={cancion}  />
                             )
                         })
                     }

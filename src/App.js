@@ -5,8 +5,8 @@ import Footer from './Components/Footer/Footer';
 import Favoritos from './Screens/Favoritos/Favoritos';
 import { Route, Switch} from 'react-router-dom';
 import Menu from './Components/Menu/Menu';
-
-
+import Detalle from './Screens/Detalle/Detalle';
+import NotFound from './Screens/NotFound/NotFound'
 import './App.css';
 
 function App() {
@@ -14,10 +14,12 @@ function App() {
     <React.Fragment>
       <Menu />
       <Switch>
-        <Route path="/" exact = {true} component={Home}/>
-        <Route path="/favoritos" component={Favoritos}/>
-        <Route path="/cancion" component={CancionCard}/> 
+        <Route path="/" exact={true} component={Home}/>
+        <Route path="/favoritos" exact={true} component={Favoritos}/>
         
+        <Route path='/unaCancion/id/:id'  component={Detalle}/>
+
+        <Route path='' component={NotFound} />
     </Switch>
    </React.Fragment>
     
@@ -26,3 +28,4 @@ function App() {
 }
 
 export default App;
+

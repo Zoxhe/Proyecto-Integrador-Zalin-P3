@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./CancionCard.css";
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
 class CancionCard extends Component {
     constructor(props) {
@@ -7,6 +8,7 @@ class CancionCard extends Component {
         this.state = {
             favsMessage: "Agregar a favoritos",
             boton: false, 
+            claseTitle: "hide"
         };
     }
     componentDidMount(){
@@ -18,67 +20,52 @@ class CancionCard extends Component {
             favoritos = favoritosToArray
         }
 
-        if(favoritos.includes(this.props.datosPeli.id)){
+        if(favoritos.includes(this.props.data.id)){
             this.setState({
-                favsMessage: 'Quitar de favoritos'
+                favsMessage: 'Eliminar de favoritos'
             })
         }
     }
 
-    agregarYsacarDeFavs(id){
-        //si el id esta en el array debe sacarlo y si no esta, debe agregarlo
-        let favoritos = [];
-        let recuperoStorage = localStorage.getItem('favoritos')
 
-        if(recuperoStorage !== null){
-            let favoritosToArray = JSON.parse(recuperoStorage); //no nos sirve cadena de texto
-            favoritos = favoritosToArray
+    mostrarYOcultarTitulo(){
+        if(this.state.claseTitle == "show") {//si es true la cambio a false
+            console.log('es true');
+            this.setState({claseTitle: 'hide'}, () => console.log(this.state))
+        } else {//si no es true, es porque es false, y la cambio a true
+            console.log('es false');
+            this.setState({claseTitle: 'show'}, () => console.log(this.state))
         }
+    }
 
-        //preguntemos si el id ya está en el array o no
-        //includes retorna un booleano.
-        if(favoritos.includes(id)){
-           //si el array esta lo queremos sacar (clase ale)
-           //luego mostrar un cambio al usuario en la pantalla
-           //usamos filter para sacar el elemento del array pero nos deja un array nuevo --> guardamos ese aray en la variable favoritos
-            
-           favoritos = favoritos.filter(unId => unId !== id); 
-            //unId es el parametro
-            //mostar al usuario un nuevo texto: agregar a favoritos
-
-            if (this.props.borrar) {this.props.borrar(id)
-            } else {
-                this.setState({
-                    favsMessage: 'Agregar a favoritos'
-                })
-            }
+    manejarMensaje(){
+        console.log(this.state);
+        if(this.state.favsMessage == "Agregar a favoritos"){
+            this.setState({favsMessage: 'Eliminar de favoritos'})
         } else {
-            favoritos.push(id);
-            //mostar un texto diferente al usuario. Quitar de favs
-            this.setState({
-                favsMessage: 'Quitar de favoritos'
-            })
+            this.setState({favsMessage: 'Agregar de favoritos'})
         }
-
-
-
-        let favoritosToString = JSON.stringify(favoritos);
-        localStorage.setItem('favoritos', favoritosToString);
-
-        console.log(localStorage);
-
     }
 
-    render() {
+    favoritos(id){
+        console.log('entro');
+        this.manejarMensaje();
+        this.props.agregarYsacarDeFavs(id)
+    }
+
+   render() {
         return( 
   
             <article className="Cancion">
-                <img src={this.props.cover} alt={this.props.title} />
-                <h3>{this.props.title}</h3>
-                <p>{this.props.name}</p>
-                <p className="link" onClick={()=>this.agregarYsacarDeFavs(this.props.id)}>{this.state.favsMessage}</p>
-                
-                
+                <img src={"https://e-cdns-images.dzcdn.net/images/cover/" + this.props.data.md5_image + "/250x250-000000-80-0-0.jpg"} alt={this.props.data.title_short} />
+                <h3>{this.props.data.title_short}</h3>
+                <p>{this.props.data.name}</p>
+                <p className={this.state.claseTitle}> {this.props.data.title} </p>
+                <p className="link" onClick={()=>this.favoritos(this.props.data.id)}>{this.state.favsMessage}</p>
+                {/**/}<p onClick={() => this.mostrarYOcultarTitulo()} > {this.state.claseTitle == "show" ? "Ocultar titulo largo" : "Mostrar titulo largo"} {/* si es true muestro el mensaje de ocultar, si es false muestro el mensaje de mostrar*/ } </p>
+                <Link to={`/unaCancion/id/${this.props.data.id}`}>
+                    <p>Ver detalle</p>
+                </Link>
             </article>
             
         )

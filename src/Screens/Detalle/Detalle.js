@@ -4,11 +4,24 @@ class Detalle extends Component{
     constructor(props){ //va a contener la info del estado inicial de un componente y controlar las props
         super(props) //le pasa al componente toda la lógica del component
         this.state = { // this es un objeto literal, state es una propiedad a la cual le asignas un objeto literal con propiedades y valores.
-            MesnajeFavoritos: "Agregar a favoritos",
-
+            favsMessage: "Agregar a favoritos",
+            data: {}
         }
 }
     componentDidMount(){
+
+        const id = this.props.match.params.id;
+
+        fetch(`https://thingproxy.freeboard.io/fetch/https://api.deezer.com/track/${id}`)
+        .then( response => response.json() )
+        .then( datos => { this.setState({
+                data : datos
+            }, () => console.log(this.state))
+
+        })
+        .catch( error => console.log(error) )
+
+
         let favoritos = []; //definimos el array donde vamos a guardar los favs
         let recuperoStorage = localStorage.getItem('favoritos') //accedemos a la info usando getItem --> se retorna un string que giardamos en JSON
 
@@ -17,32 +30,40 @@ class Detalle extends Component{
             favoritos = favsToArray
         }
 
-        if(favoritos.includes(this.props.detalleDatos.id)){
+        if(favoritos.includes(id)){
             this.setState({ // permite actualizar la indo del OL de un  componente, cuando se modifica se vuvle a renderizar
                 favsMensaje: "Quitar de favoritos"
             })
         }
+
+        
     }
 
-    agregarYquitarDeFavs(id){
-        //Tiene que agegar un id dentro de un Array y guardarlo en localstorage
-        // Si el id ya existe ofrecer al usuario la posibilidad de quitar el id del array de favoritos
+    agregarYsacarDeFavs(id){
+        //si el id esta en el array debe sacarlo y si no esta, debe agregarlo
         let favoritos = [];
         let recuperoStorage = localStorage.getItem('favoritos')
 
         if(recuperoStorage !== null){
-            let favsToArray = JSON.parse(recuperoStorage); 
-            favoritos = favsToArray
-
+            let favoritosToArray = JSON.parse(recuperoStorage); //no nos sirve cadena de texto
+            favoritos = favoritosToArray
         }
 
-         //Preguntemos si el id ya está en el array.
-         if(favoritos.includes(id)){ //includes retorna un booleano.
-            favoritos = favoritos.filter(unId => unId !== id);
+        //preguntemos si el id ya está en el array o no
+        //includes retorna un booleano.
+        if(favoritos.includes(id)){
+           //si el array esta lo queremos sacar (clase ale)
+           //luego mostrar un cambio al usuario en la pantalla
+           //usamos filter para sacar el elemento del array pero nos deja un array nuevo --> guardamos ese aray en la variable favoritos
+            
+           favoritos = favoritos.filter(unId => unId !== id); //id = this.props.data.id
+            //unId es el parametro
             //mostar al usuario un nuevo texto: agregar a favoritos
+            
             this.setState({
-                favsMessage: 'Agregar a favoritos'
-            })
+                    favsMessage: 'Agregar a favoritos'
+                })
+            
         } else {
             favoritos.push(id);
             //mostar un texto diferente al usuario. Quitar de favs
@@ -52,28 +73,29 @@ class Detalle extends Component{
         }
 
 
+
         let favoritosToString = JSON.stringify(favoritos);
         localStorage.setItem('favoritos', favoritosToString);
 
         console.log(localStorage);
 
-
     }
-    render(){
-        return(
-            <article className="detalle-card">
-                <h1 className="nombreCancion">{this.props.detalleDatos.title}</h1>
-                <img className="imagen"></img>
-                <section>
-                    <h1 className = "nombreArtista">{this.props.detalleDatos.name}</h1>
-                    <h1 className = "nombreAlbum">{this.props.detalleDatos.title}</h1>
-                    <p className="boton-detalle" onClick={()=>this.agregarYquitarDeFavs(this.props.detalleDatos.id)}>{this.state.favsMessage}</p>
-
-                </section>
-            </article>
-        )
+    render(){ 
+            return(
+                this.state.data != {} ?
+                <article className="detalle-card">
+                    <h1 className="nombreCancion">{this.state.data.title}</h1>
+                    <img className="imagen" src={"https://e-cdns-images.dzcdn.net/images/cover/" + this.state.data.md5_image + "/250x250-000000-80-0-0.jpg"}></img>
+                    <section>
+                        <h1 className = "nombreArtista">{this.state.data.name}</h1>
+                        <h1 className = "nombreAlbum">{this.state.data.title}</h1>
+                        <p className="link" onClick={()=>this.agregarYsacarDeFavs(this.state.data.id)}>{this.state.favsMessage}</p>
+                        <iframe src={this.state.data.preview}/>
+                    </section>
+                </article>
+                : <p>Cargando...</p>
+            ) 
     }
-
 }
 export default Detalle
 
