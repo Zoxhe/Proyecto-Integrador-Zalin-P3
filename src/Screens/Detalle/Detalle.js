@@ -87,12 +87,12 @@ class Detalle extends Component{
                 <article className="detalle-card">
                     <h1 className="nombreCancion">{this.state.data.title}</h1>
                     <img className="imagen" src={"https://e-cdns-images.dzcdn.net/images/cover/" + this.state.data.md5_image + "/250x250-000000-80-0-0.jpg"}></img>
-                    <section>
-                        <h1 className = "nombreArtista">{this.state.data.name}</h1>
-                        <h1 className = "nombreAlbum">{this.state.data.title}</h1>
-                        <p className="link" onClick={()=>this.agregarYsacarDeFavs(this.state.data.id)}>{this.state.favsMessage}</p>
+                    <ul>
+                        <li className = "nombreArtista">{this.state.data.artist}</li>
+                        <li className = "nombreAlbum">{this.state.data.title}</li>
+                        <li className="link" onClick={()=>this.agregarYsacarDeFavs(this.state.data.id)}>{this.state.favsMessage}</li>
                         <iframe src={this.state.data.preview}/>
-                    </section>
+                    </ul>
                 </article>
                 : <p>Cargando...</p>
             ) 

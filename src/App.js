@@ -4,7 +4,6 @@ import Home from './Screens/Home/Home';
 import Footer from './Components/Footer/Footer';
 import Favoritos from './Screens/Favoritos/Favoritos';
 import { Route, Switch} from 'react-router-dom';
-import Menu from './Components/Menu/Menu';
 import Detalle from './Screens/Detalle/Detalle';
 import NotFound from './Screens/NotFound/NotFound'
 import './App.css';
@@ -12,7 +11,7 @@ import './App.css';
 function App() {
   return (
     <React.Fragment>
-      <Menu />
+      
       <Switch>
         <Route path="/" exact={true} component={Home}/>
         <Route path="/favoritos" exact={true} component={Favoritos}/>
