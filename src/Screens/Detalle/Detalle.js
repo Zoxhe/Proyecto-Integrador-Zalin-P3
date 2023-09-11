@@ -59,7 +59,8 @@ class Detalle extends Component{
            favoritos = favoritos.filter(unId => unId !== id); //id = this.props.data.id
             //unId es el parametro
             //mostar al usuario un nuevo texto: agregar a favoritos
-            
+
+          
             this.setState({
                     favsMessage: 'Agregar a favoritos'
                 })

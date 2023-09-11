@@ -58,12 +58,10 @@ class Favoritos extends Component {
             //unId es el parametro
             //mostar al usuario un nuevo texto: agregar a favoritos
 
-            if (this.props.borrar) {this.props.borrar(id)
-            } else {
-                this.setState({
+            this.setState({
                     favsMessage: 'Agregar a favoritos'
                 })
-            }
+            
         } else {
             favoritos.push(id);
             //mostar un texto diferente al usuario. Quitar de favs
