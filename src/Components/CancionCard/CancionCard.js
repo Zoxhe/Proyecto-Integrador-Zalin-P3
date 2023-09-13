@@ -62,7 +62,7 @@ class CancionCard extends Component {
                 <p>{this.props.data.name}</p>
                 <p className={this.state.claseTitle}> {this.props.data.title} </p>
                 <p className="link" onClick={()=>this.favoritos(this.props.data.id)}>{this.state.favsMessage}</p>
-                {/**/}<p onClick={() => this.mostrarYOcultarTitulo()} > {this.state.claseTitle == "show" ? "Ocultar titulo largo" : "Mostrar titulo largo"} {/* si es true muestro el mensaje de ocultar, si es false muestro el mensaje de mostrar*/ } </p>
+                {/**/}<p onClick={() => this.mostrarYOcultarTitulo()} > {this.state.claseTitle == "show" ? "Ocultar" : "Mostrar mas"} {/* si es true muestro el mensaje de ocultar, si es false muestro el mensaje de mostrar*/ } </p>
                 <Link to={`/unaCancion/id/${this.props.data.id}`}>
                     <p>Ver detalle</p>
                 </Link>
