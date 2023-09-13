@@ -94,7 +94,7 @@ class Home extends Component {
                     {this.state.topCanciones.map( (cancion, indice) => {
                          {console.log(cancion)}
                         return(
-                            <CancionCard key={indice} data={cancion} agregarYsacarDeFavs={(id) => this.agregarYsacarDeFavs(id)} />
+                            <CancionCard redirigir={'unaCancion'} key={indice} data={cancion} agregarYsacarDeFavs={(id) => this.agregarYsacarDeFavs(id)} />
                             )
                         })
                     }
@@ -108,12 +108,13 @@ class Home extends Component {
                     {
                         this.state.cancionesAlbum.map( (album, indice) => {
                             return(
-                                <CancionCard key={indice} data={album} agregarYsacarDeFavs={(id) => this.agregarYsacarDeFavs(id)}  />
+                                <CancionCard redirigir={'unAlbum'} key={indice} data={album} agregarYsacarDeFavs={(id) => this.agregarYsacarDeFavs(id)}  />
                             )
                         })
                     }
+                
                     
-                </section>
+                </section> 
                 
                 
 

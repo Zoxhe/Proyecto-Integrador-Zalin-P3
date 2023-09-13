@@ -13,7 +13,7 @@ componentDidMount(){
 
         const id = this.props.match.params.id;
 
-        fetch(`https://thingproxy.freeboard.io/fetch/https://api.deezer.com/album/${this.state.id}`)
+        fetch(`https://thingproxy.freeboard.io/fetch/https://api.deezer.com/album/${id}`)
         .then( response => response.json() )
         .then( datos => { this.setState({
                 data : datos
@@ -87,7 +87,7 @@ componentDidMount(){
                 this.state.data != {} ?
                 <article className="detalle-card">
                     <h1 className="nombreCancion">{this.state.data.title}</h1>
-                    <img className="imagen" src={this.state.data.cover_big}></img>
+                    {/* <img className="imagen" src={this.state.data.cover_big}></img>
                     <section className="info-detalle">
                         <h1 className = "nombreArtista"> Artista:{this.state.data.artist.name}</h1>
                         <ul>
@@ -105,7 +105,7 @@ componentDidMount(){
                         </ul>
                         <h1 className="link" onClick={()=>this.agregarYsacarDeFavs(this.state.data.id)}>{this.state.favsMessage}</h1>
                         
-                    </section>
+                    </section> */}
                 </article>
                 : <p>Cargando...</p>
             ) 
