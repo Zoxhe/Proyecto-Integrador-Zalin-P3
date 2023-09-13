@@ -2,7 +2,7 @@ header {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background-color: rgb(0, 131, 74);
+    background-color: #0A767B;
 }
 
 header nav ul {
