@@ -87,7 +87,7 @@ class Home extends Component {
                 <Buscador />
                 <div className="tituloHome">
                     <h2>CANCIONES</h2>
-                    <a href="">Ver todas</a> {/* LINK TO */}
+                    <a href="/todasCanciones">Ver todas</a> {/* LINK TO */}
                 </div>
             
                 <section className="sectionHome canciones">

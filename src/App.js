@@ -9,6 +9,7 @@ import NotFound from './Screens/NotFound/NotFound'
 import PlayList from './Screens/PlayList/PlayList';
 import DetalleAlbum from './Screens/DetalleAlbum/DetalleAlbum'
 import './App.css';
+import TodasCanciones from './Screens/TodasCanciones/TodasCanciones';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/favoritos" exact={true} component={Favoritos}/>
         <Route path='/unaCancion/id/:id'  component={DetalleCancion}/>
         <Route path='/unAlbum/id/:id'  component={DetalleAlbum}/>
+        <Route path='/todasCanciones' component={TodasCanciones}/>
         
         <Route path='/playlist' component={PlayList}/>
         <Route path='' component={NotFound} />
