@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-class Detalle extends Component{
+class DetalleCancion extends Component{
     constructor(props){ //va a contener la info del estado inicial de un componente y controlar las props
         super(props) //le pasa al componente toda la lógica del component
         this.state = { // this es un objeto literal, state es una propiedad a la cual le asignas un objeto literal con propiedades y valores.
@@ -12,7 +12,7 @@ class Detalle extends Component{
 
         const id = this.props.match.params.id;
 
-        fetch(`https://thingproxy.freeboard.io/fetch/https://api.deezer.com/track/${this.state.id}`)
+        fetch(`https://thingproxy.freeboard.io/fetch/https://api.deezer.com/track/${id}`)
         .then( response => response.json() )
         .then( datos => { this.setState({
                 data : datos
@@ -56,15 +56,16 @@ class Detalle extends Component{
            //luego mostrar un cambio al usuario en la pantalla
            //usamos filter para sacar el elemento del array pero nos deja un array nuevo --> guardamos ese aray en la variable favoritos
             
-           favoritos = favoritos.filter(unId => unId !== id); //id = this.props.data.id
+           favoritos = favoritos.filter(unId => unId !== id); 
             //unId es el parametro
             //mostar al usuario un nuevo texto: agregar a favoritos
 
-          
-            this.setState({
+            if (this.props.borrar) {this.props.borrar(id)
+            } else {
+                this.setState({
                     favsMessage: 'Agregar a favoritos'
                 })
-            
+            }
         } else {
             favoritos.push(id);
             //mostar un texto diferente al usuario. Quitar de favs
@@ -86,12 +87,11 @@ class Detalle extends Component{
                 this.state.data != {} ?
                 <article className="detalle-card">
                     <h1 className="nombreCancion">{this.state.data.title}</h1>
-                    <img className="imagen" src={this.state.data.cover_big}></img>
-                    <section className="info-detalle">
-                        <h1 className = "nombreArtista"> Artista:{this.state.data.artist.name}</h1>
-                        <h1 className = "nombreAlbum">Album:{this.state.data.album.title}</h1>
-            
-                        <h1 className="link" onClick={()=>this.agregarYsacarDeFavs(this.state.data.id)}>{this.state.favsMessage}</h1>
+                    <img className="imagen" src={"https://e-cdns-images.dzcdn.net/images/cover/" + this.state.data.md5_image + "/250x250-000000-80-0-0.jpg"}></img>
+                    <section>
+                        <h1 className = "nombreArtista">{this.state.data.name}</h1>
+                        <h1 className = "nombreAlbum">{this.state.data.title}</h1>
+                        <p className="link" onClick={()=>this.agregarYsacarDeFavs(this.state.data.id)}>{this.state.favsMessage}</p>
                         <iframe src={this.state.data.preview}/>
                     </section>
                 </article>
@@ -99,7 +99,6 @@ class Detalle extends Component{
             ) 
     }
 }
-export default Detalle
-
+export default DetalleCancion
 
 
