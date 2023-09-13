@@ -43,7 +43,7 @@ class CancionCard extends Component {
         if(this.state.favsMessage == "Agregar a favoritos"){
             this.setState({favsMessage: 'Eliminar de favoritos'})
         } else {
-            this.setState({favsMessage: 'Agregar de favoritos'})
+            this.setState({favsMessage: 'Agregar a favoritos'})
         }
     }
 
