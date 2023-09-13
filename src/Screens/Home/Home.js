@@ -7,8 +7,8 @@ class Home extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            topcanciones : [],
-            cancionesalbum : []
+            topCanciones : [],
+            cancionesAlbum : []
         }
     }
 
@@ -17,19 +17,19 @@ class Home extends Component {
         fetch('https://thingproxy.freeboard.io/fetch/https://api.deezer.com/chart/0/tracks&limit=5')
             .then( response => response.json() )
             .then( datos => { this.setState({
-                    topcanciones : datos.data
+                    topCanciones : datos.data
                 })
-
+                console.log("CANCIONES")
                 console.log(datos.data);
             })
             .catch( error => console.log(error) )
 
-        fetch('https://thingproxy.freeboard.io/fetch/https://api.deezer.com/album/302127/tracks&limit=5')
+        fetch('https://thingproxy.freeboard.io/fetch/https://api.deezer.com/chart/0/albums&top?limit=5')
             .then( response => response.json() )
             .then( datos => { this.setState({
-                    cancionesalbum : datos.data
+                    cancionesAlbum : datos.data
                 })
-
+                console.log("ALBUM")
                 console.log(datos.data);
             })
             .catch( error => console.log(error) )
@@ -85,22 +85,30 @@ class Home extends Component {
             
             <div className="Home">
                 <Buscador />
-
-                <a href="">Ver todas</a>
-                <section className="canciones">
-                    {this.state.topcanciones.map( (cancion, indice) => {
+                <div className="tituloHome">
+                    <h2>CANCIONES</h2>
+                    <a href="">Ver todas</a> {/* LINK TO */}
+                </div>
+            
+                <section className="sectionHome canciones">
+                    {this.state.topCanciones.map( (cancion, indice) => {
+                         {console.log(cancion)}
                         return(
                             <CancionCard key={indice} data={cancion} agregarYsacarDeFavs={(id) => this.agregarYsacarDeFavs(id)} />
                             )
                         })
                     }
                 </section>
-                <a href="">Ver todas</a>
-                <section className="canciones_album">
+                <div className="tituloHome">
+                    <h2>ALBUMS</h2>
+                    <a href="">Ver todas</a> {/* LINK TO */}
+                </div>
+                
+                <section className="sectionHome canciones_album">
                     {
-                        this.state.cancionesalbum.map( (cancion, indice) => {
+                        this.state.cancionesAlbum.map( (album, indice) => {
                             return(
-                                <CancionCard key={indice} data={cancion} agregarYsacarDeFavs={(id) => this.agregarYsacarDeFavs(id)}  />
+                                <CancionCard key={indice} data={album} agregarYsacarDeFavs={(id) => this.agregarYsacarDeFavs(id)}  />
                             )
                         })
                     }

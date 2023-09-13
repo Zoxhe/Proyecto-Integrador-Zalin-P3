@@ -10,3 +10,17 @@ h3 {
 .hide{
     display: none;
 }
+.cancion{
+    justify-content: center;
+    padding-left: 0.1 vw;
+    padding-right: 0.1vw;
+    width: 18vw;
+    margin-bottom: 5vh;
+}
+.links{
+    text-decoration: none;
+    color: black;
+}
+.cover{
+    border-radius: 5%;
+}

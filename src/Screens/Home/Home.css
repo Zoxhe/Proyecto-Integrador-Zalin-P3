@@ -1,15 +1,19 @@
-section {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    flex-wrap: wrap;
-}
+    .sectionHome {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+    }
 
-.canciones_album {
-    display: flex;
-}
-
-a {
-    font-size: large;
-    margin-left: 90vw
-}
+    a {
+        font-size: large;
+    }
+    .tituloHome{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        width: 18vw;
+        margin-left: 5vw;
+    }

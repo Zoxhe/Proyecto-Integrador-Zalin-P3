@@ -56,15 +56,17 @@ class CancionCard extends Component {
    render() {
         return( 
   
-            <article className="Cancion">
-                <img src={"https://e-cdns-images.dzcdn.net/images/cover/" + this.props.data.md5_image + "/250x250-000000-80-0-0.jpg"} alt={this.props.data.title_short} />
-                <h3>{this.props.data.title_short}</h3>
+            <article className="cancion">
+                <Link to={`/unaCancion/id/${this.props.data.id}`} className="links">
+                <img className="cover" src={"https://e-cdns-images.dzcdn.net/images/cover/" + this.props.data.md5_image + "/250x250-000000-80-0-0.jpg"} alt={this.props.data.title_short} />
+                <h3>{this.props.data.title}</h3>
                 <p>{this.props.data.name}</p>
                 <p className={this.state.claseTitle}> {this.props.data.title} </p>
                 <p className="link" onClick={()=>this.favoritos(this.props.data.id)}>{this.state.favsMessage}</p>
                 {/**/}<p onClick={() => this.mostrarYOcultarTitulo()} > {this.state.claseTitle == "show" ? "Ocultar" : "Mostrar mas"} {/* si es true muestro el mensaje de ocultar, si es false muestro el mensaje de mostrar*/ } </p>
                 <Link to={`/unaCancion/id/${this.props.data.id}`}>
                     <p>Ver detalle</p>
+                </Link>
                 </Link>
             </article>
             

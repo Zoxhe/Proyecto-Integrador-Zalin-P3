@@ -13,7 +13,7 @@ import './App.css';
 function App() {
   return (
     <React.Fragment>
-      
+      <Header/>
       <Switch>
         <Route path="/" exact={true} component={Home}/>
         <Route path="/favoritos" exact={true} component={Favoritos}/>
@@ -23,6 +23,7 @@ function App() {
         <Route path='/playlist' component={PlayList}/>
         <Route path='' component={NotFound} />
     </Switch>
+    <Footer/>
    </React.Fragment>
     
 
