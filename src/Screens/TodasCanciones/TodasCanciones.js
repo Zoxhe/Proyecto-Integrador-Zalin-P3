@@ -7,21 +7,31 @@ class TodasCanciones extends Component {
     super(props);
     this.state = {
       canciones: [],
+      limit: 5,
     };
   }
 
-  componentDidMount() {
-    //buscamos datos
+  fetchSongs() {
     fetch(
-      "https://thingproxy.freeboard.io/fetch/https://api.deezer.com/chart/0/tracks&limit=5"
+      `https://thingproxy.freeboard.io/fetch/https://api.deezer.com/chart/0/tracks&limit=${this.state.limit}`
     )
       .then((res) => res.json())
       .then((data) =>
         this.setState({
           canciones: data.data,
+          limit: this.state.limit + 5,
         })
       )
       .catch((error) => console.log(error));
+  }
+
+  componentDidMount() {
+    this.fetchSongs();
+    //buscamos datos
+  }
+
+  showMore() {
+    this.fetchSongs();
   }
 
   // filtrar(textoAFiltrar){//que deje solo las playlist donde el texto al filtrar este incluido en el nommbre --> filter
@@ -43,6 +53,7 @@ class TodasCanciones extends Component {
           {this.state.canciones.map((cancion, index) => (
             <CancionCard key={index} data={cancion} />
           ))}
+          <button onClick={() => this.showMore()}>Mostrar más</button>
         </section>
       </React.Fragment>
     );
