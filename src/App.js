@@ -4,8 +4,10 @@ import Home from './Screens/Home/Home';
 import Footer from './Components/Footer/Footer';
 import Favoritos from './Screens/Favoritos/Favoritos';
 import { Route, Switch} from 'react-router-dom';
-import Detalle from './Screens/Detalle/Detalle';
+import DetalleCancion from './Screens/DetalleCancion/DetalleCancion';
 import NotFound from './Screens/NotFound/NotFound'
+import PlayList from './Screens/PlayList/PlayList';
+import DetalleAlbum from './Screens/DetalleAlbum/DetalleAlbum'
 import './App.css';
 
 function App() {
@@ -15,9 +17,10 @@ function App() {
       <Switch>
         <Route path="/" exact={true} component={Home}/>
         <Route path="/favoritos" exact={true} component={Favoritos}/>
+        <Route path='/unaCancion/id/:id'  component={DetalleCancion}/>
+        <Route path='/unAlbum/id/:id'  component={DetalleAlbum}/>
         
-        <Route path='/unaCancion/id/:id'  component={Detalle}/>
-
+        <Route path='/playlist' component={PlayList}/>
         <Route path='' component={NotFound} />
     </Switch>
    </React.Fragment>

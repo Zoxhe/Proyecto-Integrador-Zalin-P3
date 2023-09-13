@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-
-import Tarjeta from '../CancionCard/CancionCard';
-
+import CancionCard from '../../Components/CancionCard/CancionCard';
 import './Buscador.css';
 
 class Buscador extends Component {
@@ -45,6 +43,7 @@ class Buscador extends Component {
 
     render() {
         return(
+            this.state.busqueda != {} ?
             <>
                 <form onSubmit={ (evento) => this.preventDefault(evento) } method='GET' className="Buscador">
                     <input onInput={ (evento) => this.guardarBusqueda(evento) } type="text" placeholder="Buscar" value={this.state.busqueda} />
@@ -59,7 +58,7 @@ class Buscador extends Component {
                             {
                                 this.state.lista_canciones.map( (cancion, indice) => {
                                     return(
-                                        <Tarjeta key={indice} cover={"https://e-cdns-images.dzcdn.net/images/cover/" + cancion.md5_image + "/250x250-000000-80-0-0.jpg"} title={cancion.title} artist_name={cancion.artist.name} />
+                                        <CancionCard key={indice} cover={"https://e-cdns-images.dzcdn.net/images/cover/" + cancion.md5_image + "/250x250-000000-80-0-0.jpg"} title={cancion.title} artist_name={cancion.artist.name} />
                                     )
                                 })
                             }
@@ -69,6 +68,7 @@ class Buscador extends Component {
                     null
                 }
             </>
+            :<p>Cargando...</p>
         )
     }
 }

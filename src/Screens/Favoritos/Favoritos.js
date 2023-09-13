@@ -10,7 +10,7 @@ class Favoritos extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            datos: []
+            datos: [],
         }
     }
 
@@ -32,6 +32,7 @@ class Favoritos extends Component {
                 let listaCanciones = this.state.datos;
                 listaCanciones.push(datos);
                 this.setState({datos: listaCanciones});
+                
             })
             .catch( error => console.log(error) )
         })
@@ -82,11 +83,11 @@ class Favoritos extends Component {
 
     render() {
         return(
+            this.state.datos != {}?
             <>
-                <h1>Favoritos</h1>
+                <h1 clasName="Titulo">Favoritos</h1>
                 <section className="canciones_album">
-                    {
-                        this.state.datos.map( (cancion, indice) => {
+                    {this.state.datos.map( (cancion, indice) => {
                             return(
                                 <CancionCard key={indice} data={cancion} agregarYsacarDeFavs={(id) => this.agregarYsacarDeFavs(id)}  />
                             )
@@ -94,6 +95,7 @@ class Favoritos extends Component {
                     }
                 </section>
             </>
+            : <p>Cargando...</p>
         )
     }
 }

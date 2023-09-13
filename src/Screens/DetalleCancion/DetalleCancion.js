@@ -12,7 +12,7 @@ class Detalle extends Component{
 
         const id = this.props.match.params.id;
 
-        fetch(`https://thingproxy.freeboard.io/fetch/https://api.deezer.com/track/${id}`)
+        fetch(`https://thingproxy.freeboard.io/fetch/https://api.deezer.com/track/${this.state.id}`)
         .then( response => response.json() )
         .then( datos => { this.setState({
                 data : datos
@@ -86,13 +86,14 @@ class Detalle extends Component{
                 this.state.data != {} ?
                 <article className="detalle-card">
                     <h1 className="nombreCancion">{this.state.data.title}</h1>
-                    <img className="imagen" src={"https://e-cdns-images.dzcdn.net/images/cover/" + this.state.data.md5_image + "/250x250-000000-80-0-0.jpg"}></img>
-                    <ul>
-                        <li className = "nombreArtista">{this.state.data.name}</li>
-                        <li className = "nombreAlbum">{this.state.data.title}</li>
-                        <li className="link" onClick={()=>this.agregarYsacarDeFavs(this.state.data.id)}>{this.state.favsMessage}</li>
+                    <img className="imagen" src={this.state.data.cover_big}></img>
+                    <section className="info-detalle">
+                        <h1 className = "nombreArtista"> Artista:{this.state.data.artist.name}</h1>
+                        <h1 className = "nombreAlbum">Album:{this.state.data.album.title}</h1>
+            
+                        <h1 className="link" onClick={()=>this.agregarYsacarDeFavs(this.state.data.id)}>{this.state.favsMessage}</h1>
                         <iframe src={this.state.data.preview}/>
-                    </ul>
+                    </section>
                 </article>
                 : <p>Cargando...</p>
             ) 

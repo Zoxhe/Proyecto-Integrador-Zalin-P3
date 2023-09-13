@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-
 import Buscador from '../../Components/Buscador/Buscador';
 import CancionCard from '../../Components/CancionCard/CancionCard';
-
 import './Home.css';
 
 class Home extends Component {
@@ -84,6 +82,7 @@ class Home extends Component {
 
     render() {
         return(
+            
             <div className="Home">
                 <Buscador />
 
@@ -111,6 +110,7 @@ class Home extends Component {
                 
 
             </div>
+            
         )
     }
 }
