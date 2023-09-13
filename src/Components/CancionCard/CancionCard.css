@@ -23,4 +23,5 @@ h3 {
 }
 .cover{
     border-radius: 5%;
+    box-shadow: 7px 7px 7px black;
 }

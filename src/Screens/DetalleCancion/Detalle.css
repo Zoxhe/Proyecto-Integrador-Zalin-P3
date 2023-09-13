@@ -1,0 +1,14 @@
+.detalle-card{
+   
+    align-items: center;
+    justify-content: space-between;
+    width: 18vw;
+    margin-left: 20vw;
+    height: 81.5vh;
+}
+
+
+.imagen{
+    border-radius: 5%;
+    box-shadow: 7px 7px 7px black;
+}

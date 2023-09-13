@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import './Detalle.css';
 
 class DetalleCancion extends Component{
     constructor(props){ //va a contener la info del estado inicial de un componente y controlar las props
