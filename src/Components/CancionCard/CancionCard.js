@@ -67,8 +67,8 @@
                     <p className={this.state.claseTitle}> {this.props.data.rank} </p>
                     <button className="link" onClick={()=>this.favoritos(this.props.data.id)}>{this.state.favsMessage}</button>
                 
-                    <Link to={`/${this.props.redirigir}/id/${this.props.data.id}`}><p>Ver detalle</p></Link>
-                     {/**/}<p onClick={() => this.mostrarYOcultarTitulo()} > {this.state.claseTitle == "show" ? "Ocultar" : "Mostrar mas"} {/* si es true muestro el mensaje de ocultar, si es false muestro el mensaje de mostrar*/ } </p>
+                    <Link to={`/${this.props.redirigir}/id/${this.props.data.id}`}><p className= "detalle" >Ver detalle</p></Link>
+                     {/**/}<p className= "detalle" onClick={() => this.mostrarYOcultarTitulo()} > {this.state.claseTitle == "show" ? "Ocultar" : "Mostrar mas"} {/* si es true muestro el mensaje de ocultar, si es false muestro el mensaje de mostrar*/ } </p>
                 </article>
                 
             )

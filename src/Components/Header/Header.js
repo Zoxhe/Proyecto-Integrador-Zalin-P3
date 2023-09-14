@@ -6,7 +6,7 @@
     function Header() {
         return(
             <header>
-                <h1>Zalin</h1>
+                <h1>ZALIN</h1>
                 <nav>
                     <ul>
                         <li><Link to = '/' >Home</Link></li> 

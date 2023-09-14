@@ -4,7 +4,6 @@ header {
     align-items: center;
     background-color: #830A0A;
     border-radius: 100px / 10px;
-    box-shadow: -6px 10px 30px rgba(237, 81, 19, 0.6); 
 }
 
 header nav ul {
@@ -17,13 +16,16 @@ header nav ul li {
 }
 
 h1{
+    color: white;
     text-shadow: 4px 4px 4px #FF5733;
 }
 
 ul{
     color:black;
+    font-weight: bold;
 }
 
 a{
-    color: black;
+    color: white;
+    text-decoration: none;
 }

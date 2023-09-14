@@ -1,7 +1,7 @@
 h3 {
     inline-size: 250px;
     overflow-wrap: break-word;
-    color: #FF5733 ;
+    color: white ;
 }
 
 .show{
@@ -20,9 +20,34 @@ h3 {
 }
 .links{
     text-decoration: none;
-    color: #FF5733;
+    color: white;
 }
 .cover{
     border-radius: 5%;
-    box-shadow: 7px 7px 7px #830A0A;
+    box-shadow: 7px 7px 7px #514747af;
+}
+.link{
+    color: black;
+    background-color: #ccc;
+    border-radius: 6px;
+    font-size: 15px;
+    border: white;
+    width: 200px;
+    height: 40px;
+    
+}
+.link:hover{
+    color: white;
+    font-weight: bold;
+    background-color: #ccc;
+    border-radius: 6px;
+    font-size: 17px;
+    border: white;
+    box-shadow:  0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(166, 160, 160, 0.19);
+    
+}
+.detalle{
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
 }

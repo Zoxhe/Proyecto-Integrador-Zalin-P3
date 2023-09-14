@@ -6,10 +6,10 @@ function Footer() {
     return(
         <footer>
             <ul>
-                <li className='zalin'>Zalin</li>
-                <li>Zoe</li>
-                <li>Victoria</li>
-                <li>Julieta</li>
+                <li className='zalin'> - ZALIN - </li>
+                <li className='nombres'>Zoe</li>
+                <li className='nombres'>Victoria</li>
+                <li className='nombres'>Julieta</li>
             </ul>
         </footer>
     )

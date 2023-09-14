@@ -13,7 +13,8 @@
         font-size: large;
         color: -webkit-link;
         cursor: pointer;
-        text-decoration: underline;
+        text-decoration: none;
+        color: white;
     }
 
     .vertodas{
@@ -28,6 +29,7 @@
         justify-content: space-between;
         width: 18vw;
         margin-left: 5vw;
+        color: white;
         text-shadow: 4px 4px 4px rgb(234, 95, 35);
 
     }
@@ -44,7 +46,7 @@
         margin-block-end: 1em;
         margin-inline-start: 0px;
         margin-inline-end: 0px;
-        color: #FF5733;
+        color: white;
         text-decoration: underline;
 
     }

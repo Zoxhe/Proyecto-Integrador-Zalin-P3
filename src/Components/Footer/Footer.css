@@ -21,4 +21,8 @@ footer ul li {
 .zalin{
     text-shadow: 4px 4px 4px #FF5733;
     font-weight: bold;
+    color: white;
+}
+.nombres{
+    color: white;
 }
