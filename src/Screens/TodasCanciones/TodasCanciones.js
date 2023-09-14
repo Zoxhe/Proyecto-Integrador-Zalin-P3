@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import CancionCard from "../../Components/CancionCard/CancionCard";
 
+import './TodasCanciones.css';
 import Filtro from "../../Components/Filtro/Filtro";
 
 class TodasCanciones extends Component {
@@ -47,7 +48,7 @@ class TodasCanciones extends Component {
   render() {
     return (
       <React.Fragment>
-        <h2>Todas las canciones</h2>
+        <h2 className= 'todaslascanciones'>Todas las canciones</h2>
 
         <Filtro filtrar={(texto) => this.filtrar(texto)} />
 

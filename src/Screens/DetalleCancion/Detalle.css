@@ -10,9 +10,13 @@
 
 .imagen{
     border-radius: 5%;
-    box-shadow: 7px 7px 7px black;
+    box-shadow: 7px 7px 7px #830A0A;
 }
 
 .songPrev {
     max-height: 1000px;
+}
+
+.cargando{
+    color:rgb(255, 98, 0)
 }

@@ -2,8 +2,11 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #0A767B;
-
+    background-color: #830A0A;
+    border-radius: 100px / 10px;
+    -moz-box-shadow: 0 -5px 15px rgba(238, 223, 223, 0.5);
+    -webkit-box-shadow: 0 -5px 15px rgba(223, 214, 214, 0.5);
+    box-shadow: 0 -5px 15px rgba(237, 81, 19, 0.6);
 }
 
 footer ul {
@@ -13,4 +16,9 @@ footer ul {
 footer ul li {
     list-style: none;
     margin-right: 20px;
+}
+
+.zalin{
+    text-shadow: 4px 4px 4px #FF5733;
+    font-weight: bold;
 }

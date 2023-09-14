@@ -101,7 +101,7 @@ class DetalleCancion extends Component {
                         </audio>
 
                     </article>
-                    : <p>Cargando...</p>
+                    : <p className='cargando'>Cargando...</p>
             }
             </>
         )

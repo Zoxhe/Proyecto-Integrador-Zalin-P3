@@ -4,11 +4,22 @@
         justify-content: center;
         align-items: center;
         flex-wrap: wrap;
-        background-color: darkgray;
+        background-color: black;
+        background-image: radial-gradient(black 1px, transparent 0);
+        background-size: 40px 40px;
     }
 
-    a {
+    .otro {
         font-size: large;
+        color: -webkit-link;
+        cursor: pointer;
+        text-decoration: underline;
+    }
+
+    .vertodas{
+        color: black;
+        cursor: pointer;
+        text-decoration: underline;
     }
     .tituloHome{
         display: flex;
@@ -17,10 +28,32 @@
         justify-content: space-between;
         width: 18vw;
         margin-left: 5vw;
-        text-shadow: 4px 4px 4px rgb(236, 231, 231);
+        text-shadow: 4px 4px 4px rgb(234, 95, 35);
 
     }
 
-    .home{
-        background-color:darkgray;
+    div{
+        background-color: black;
+        background-image: radial-gradient(black 1px, transparent 0);
+        background-size: 40px 40px;
+    }
+
+    p {
+        display: block;
+        margin-block-start: 1em;
+        margin-block-end: 1em;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+        color: #FF5733;
+        text-decoration: underline;
+
+    }
+
+
+
+    .HFV{
+        font-size: large;
+        color: black;
+        cursor: pointer;
+        text-decoration: underline;
     }

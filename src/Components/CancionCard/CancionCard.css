@@ -1,6 +1,7 @@
 h3 {
     inline-size: 250px;
     overflow-wrap: break-word;
+    color: #FF5733 ;
 }
 
 .show{
@@ -19,9 +20,9 @@ h3 {
 }
 .links{
     text-decoration: none;
-    color: black;
+    color: #FF5733;
 }
 .cover{
     border-radius: 5%;
-    box-shadow: 7px 7px 7px black;
+    box-shadow: 7px 7px 7px #830A0A;
 }
