@@ -62,9 +62,9 @@
                     </Link>
                     <h3>{this.props.data.title}</h3>
                     <p>{this.props.data.name}</p>
-                    <p className={this.state.claseTitle}> {this.props.data.title} </p>
-                    <p className={this.state.claseTitle}> {this.props.data.duration} </p>
-                    <p className={this.state.claseTitle}> {this.props.data.rank} </p>
+                    <p className={this.state.claseTitle}> Titulo: {this.props.data.title} </p>
+                    <p className={this.state.claseTitle}> Duración: {this.props.data.duration} segundos</p>
+                    <p className={this.state.claseTitle}> Ranking: {this.props.data.rank} </p>
                     <button className="link" onClick={()=>this.favoritos(this.props.data.id)}>{this.state.favsMessage}</button>
                 
                     <Link to={`/${this.props.redirigir}/id/${this.props.data.id}`}><p className= "detalle" >Ver detalle</p></Link>
