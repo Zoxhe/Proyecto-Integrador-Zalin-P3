@@ -52,7 +52,7 @@ class TodasCanciones extends Component {
 
         <Filtro filtrar={(texto) => this.filtrar(texto)} />
 
-        <section>
+        <div>
           {
             this.state.canciones.length > 0 ?
               this.state.cancionesFiltradas === null ?
@@ -66,7 +66,7 @@ class TodasCanciones extends Component {
           }
           
           <button onClick={() => this.showMore()}>Mostrar más</button>
-        </section>
+        </div>
       </React.Fragment>
     );
   }

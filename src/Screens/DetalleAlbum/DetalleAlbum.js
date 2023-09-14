@@ -89,19 +89,20 @@ class DetalleAlbum extends Component {
             <>
                 {
                     this.state.data !== null ?
-                    <article className="detalle-card">
-                        <div className='detalle-card-left'>
+                    <article className="detalle-album-card">
+                        <div className='detalle-album-left'>
                             <h1 className="nombreCancion">{this.state.data.title}</h1>
-                            <img className="imagen" src={this.state.data.cover_big} alt="" />
+                            <img className="imagen-detalle-album" src={this.state.data.cover_big} alt="" />
                         </div>
-                        <div className='detalle-card-right'>
+                        <div className='detalle-album-right'>
                             <section className="info-detalle">
-                            <h1 className="nombreArtista">Artista: {this.state.data.artist.name}</h1>
+                                <h1 className="nombreArtista">Artista: {this.state.data.artist.name}</h1>
                                 <ul className="textoDetalle">
                                     {
                                         this.state.data.tracks.data.map((track, i) => <li key={track.id + i}>{track.title}</li>)
                                     }
                                 </ul>
+                                <button className="link-detalle" onClick={() => this.agregarYsacarDeFavs(this.state.data.id)}>{this.state.favsMessage}</button>
                             </section>
                         </div>
                     </article> :

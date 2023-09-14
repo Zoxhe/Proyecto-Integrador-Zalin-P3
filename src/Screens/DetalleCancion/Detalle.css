@@ -1,16 +1,21 @@
 .detalle-cancion-card{
    
-    align-items: center;
-    justify-content: space-between;
+    display: flex;
+    flex-direction: row;
     width: 18vw;
     margin-left: 20vw;
+    margin-top: 10vw ;
     height: 81.5vh;
 }
 
+.detalle-cancion-left{
+    margin-right: 100px;
+}
 
-.imagen{
+.imagen-detalle-cancion{
     border-radius: 5%;
     box-shadow: 7px 7px 7px #830A0A;
+    width: 300px;
 }
 
 .songPrev {
@@ -19,4 +24,15 @@
 
 .cargando{
     color:rgb(255, 98, 0)
+}
+.link-detalle{
+    color: black;
+    background-color: #ccc;
+    border-radius: 6px;
+    font-size: 15px;
+    border: white;
+    width: 200px;
+    height: 40px;
+    margin-top: 50px;
+    margin-bottom: 50px;
 }

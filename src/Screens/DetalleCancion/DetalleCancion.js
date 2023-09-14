@@ -89,16 +89,20 @@ class DetalleCancion extends Component {
             {
                 this.state.data !== null ?
                     <article className="detalle-cancion-card">
-                        <h1 className="nombreCancion">{this.state.data.title}</h1>
-                        <img className="imagen" src={"https://e-cdns-images.dzcdn.net/images/cover/" + this.state.data.md5_image + "/250x250-000000-80-0-0.jpg"} alt=""/>
-                        <section>
-                            <h1 className="nombreArtista">{this.state.data.name}</h1>
-                            <h1 className="nombreAlbum">{this.state.data.title}</h1>
-                            <p className="link" onClick={() => this.agregarYsacarDeFavs(this.state.data.id)}>{this.state.favsMessage}</p>
-                        </section>
-                        <audio controls>
-                            <source src={this.state.data.preview} type="audio/mpeg" />
-                        </audio>
+                        <div className='detalle-cancion-left'>                       
+                            <h1 className="nombreCancion">{this.state.data.title}</h1>
+                            <img className="imagen-detalle-cancion" src={"https://e-cdns-images.dzcdn.net/images/cover/" + this.state.data.md5_image + "/250x250-000000-80-0-0.jpg"} alt=""/>
+                        </div>
+                        <div className='detalle-cancion-right'> 
+                            <section>
+                                <h1 className="nombreArtista">{this.state.data.name}</h1>
+                                <h1 className="nombreAlbum">{this.state.data.title}</h1>
+                                <button className="link-detalle" onClick={() => this.agregarYsacarDeFavs(this.state.data.id)}>{this.state.favsMessage}</button>
+                            </section>
+                            <audio controls>
+                                <source src={this.state.data.preview} type="audio/mpeg" />
+                            </audio>
+                        </div>
 
                     </article>
                     : <p className='cargando'>Cargando...</p>
