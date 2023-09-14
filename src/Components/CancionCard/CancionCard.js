@@ -57,7 +57,7 @@
             return( 
     
                 <article className="cancion">
-                    <Link to={`/unaCancion/id/${this.props.data.id}`} className="links">
+                    <Link to={`/${this.props.redirigir}/id/${this.props.data.id}`} className="links">
                         <img className="cover" src={"https://e-cdns-images.dzcdn.net/images/cover/" + this.props.data.md5_image + "/250x250-000000-80-0-0.jpg"} alt={this.props.data.title_short} />
                     </Link>
                     <h3>{this.props.data.title}</h3>
