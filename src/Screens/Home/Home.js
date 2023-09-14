@@ -103,7 +103,7 @@ class Home extends Component {
                 </section>
                 <div className="tituloHome">
                     <h2>ALBUMS</h2>
-                    <a className='otro'href="">Ver todas</a> {/* LINK TO */}
+                    <a className='otro'href="/todosAlbums">Ver todas</a> {/* LINK TO */}
                 </div>
 
                 <section className="sectionHome canciones_album">
