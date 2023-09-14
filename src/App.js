@@ -10,19 +10,22 @@
   import DetalleAlbum from './Screens/DetalleAlbum/DetalleAlbum'
   import './App.css';
   import TodasCanciones from './Screens/TodasCanciones/TodasCanciones';
+  import ResultadosBusqueda from './Screens/ResultadosBusqueda/ResultadosBusqueda';
+  import Buscador from './Components/Buscador/Buscador';
 
 
   function App() {
     return (
       <React.Fragment>
         <Header/>
+        <Buscador/>
         <Switch>
           <Route path="/" exact={true} component={Home}/>
           <Route path="/favoritos" exact={true} component={Favoritos}/>
           <Route path='/unaCancion/id/:id'  component={DetalleCancion}/>
           <Route path='/unAlbum/id/:id'  component={DetalleAlbum}/>
           <Route path='/todasCanciones' component={TodasCanciones}/>
-          
+          <Route path='/resultados-busqueda/:busqueda' component={ResultadosBusqueda}/>
           <Route path='/playlist' component={PlayList}/>
           <Route path='' component={NotFound} />
       </Switch>

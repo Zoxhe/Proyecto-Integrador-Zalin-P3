@@ -58,18 +58,16 @@
     
                 <article className="cancion">
                     <Link to={`/unaCancion/id/${this.props.data.id}`} className="links">
-                    <img className="cover" src={"https://e-cdns-images.dzcdn.net/images/cover/" + this.props.data.md5_image + "/250x250-000000-80-0-0.jpg"} alt={this.props.data.title_short} />
+                        <img className="cover" src={"https://e-cdns-images.dzcdn.net/images/cover/" + this.props.data.md5_image + "/250x250-000000-80-0-0.jpg"} alt={this.props.data.title_short} />
+                    </Link>
                     <h3>{this.props.data.title}</h3>
                     <p>{this.props.data.name}</p>
                     <p className={this.state.claseTitle}> {this.props.data.title} </p>
                     <p className={this.state.claseTitle}> {this.props.data.duration} </p>
                     <p className={this.state.claseTitle}> {this.props.data.rank} </p>
-                    <p className="link" onClick={()=>this.favoritos(this.props.data.id)}>{this.state.favsMessage}</p>
+                    <button className="link" onClick={()=>this.favoritos(this.props.data.id)}>{this.state.favsMessage}</button>
                 
-                    <Link to={`/${this.props.redirigir}/id/${this.props.data.id}`}>
-                        <p>Ver detalle</p>
-                    </Link>
-                    </Link>
+                    <Link to={`/${this.props.redirigir}/id/${this.props.data.id}`}><p>Ver detalle</p></Link>
                      {/**/}<p onClick={() => this.mostrarYOcultarTitulo()} > {this.state.claseTitle == "show" ? "Ocultar" : "Mostrar mas"} {/* si es true muestro el mensaje de ocultar, si es false muestro el mensaje de mostrar*/ } </p>
                 </article>
                 

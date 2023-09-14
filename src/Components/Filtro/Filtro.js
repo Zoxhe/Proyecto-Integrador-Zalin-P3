@@ -15,9 +15,10 @@ class Filtro extends Component {
     }
 
     guardarDatosDelInput(eventoEnCampoInput) {
-        this.setState({valor: eventoEnCampoInput.target.value //agarrar el valor que pusieron en el input
-    }, () => this.props.filtrar(this.state.valor)) //"lo q quieras ejecutar, ejecutalo como segundo parametrp de setState. hacemos esto para estar seguros que el estado esta actualizado
-    //jecutamos el metodo filtrar una vez que el estado esta actualizado
+        this.setState({
+            valor: eventoEnCampoInput.target.value //agarrar el valor que pusieron en el input
+        }, () => this.props.filtrar(this.state.valor)) //"lo q quieras ejecutar, ejecutalo como segundo parametrp de setState. hacemos esto para estar seguros que el estado esta actualizado
+        //jecutamos el metodo filtrar una vez que el estado esta actualizado
 
         // console.log(this.state.valor);
         return true
@@ -26,16 +27,18 @@ class Filtro extends Component {
     render() { //la e representa el evento submit
         //console.log(this.props);
         return (
-            this.state.valor != {}?
-            <div className="formDeBusqueda">
-                <form className="filter" action="" method='GET' onSubmit={(e) => this.controlarEnvio(e)}> 
-                    
-                    <label htmFor="">Texto a Filtrar:</label>
-                    <input className="search" name="filtro" type="text"placeholder="texto a filtrar" onChange={(e) => this.guardarDatosDelInput(e)} value={this.state.valor} />
-                    <button className="bottonsearch" type='button'>Filtrar</button>
-                </form>
-            </div>
-            :<p>Cargando...</p>
+            <>
+                {
+                    this.state.valor != {} ?
+                        <div className="formDeBusqueda">
+                            <form className="filter" action="" method='GET' onSubmit={(e) => this.controlarEnvio(e)}>
+                                <input className="search" name="filtro" type="text" placeholder="texto a filtrar" onChange={(e) => this.guardarDatosDelInput(e)} value={this.state.valor} />
+                                <button className="bottonsearch" type='button'>Filtrar</button>
+                            </form>
+                        </div>
+                        : <p>Cargando...</p>
+                }
+            </>
         )
     }
 

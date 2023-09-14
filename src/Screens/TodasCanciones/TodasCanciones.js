@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import CancionCard from "../../Components/CancionCard/CancionCard";
+
 import Filtro from "../../Components/Filtro/Filtro";
 
 class TodasCanciones extends Component {
@@ -19,6 +20,7 @@ class TodasCanciones extends Component {
       .then((data) =>
         this.setState({
           canciones: data.data,
+          cancionesFiltradas: null,
           limit: this.state.limit + 5,
         })
       )
@@ -34,25 +36,34 @@ class TodasCanciones extends Component {
     this.fetchSongs();
   }
 
-  // filtrar(textoAFiltrar){//que deje solo las playlist donde el texto al filtrar este incluido en el nommbre --> filter
-  //     let playListsFiltradas = this.state.playList.filter(function(unaPlayList){
-  //         return textoAFiltrar.includes(unaPlayList.title)
-  //     })
-  //     this.setState({
-  //         playList: playListsFiltradas //actualizamos el dato y lo cargamos al estado
-  //     })
-  // }
+  filtrar(textoAFiltrar) {//que deje solo las playlist donde el texto al filtrar este incluido en el nommbre --> filter
+    let cancionesFiltradas = this.state.canciones.filter((cancion) =>  cancion.title.toLowerCase().includes(textoAFiltrar.toLowerCase()))
+    
+    this.setState({
+      cancionesFiltradas: cancionesFiltradas //actualizamos el dato y lo cargamos al estado
+    })
+  }
 
   render() {
-    console.log(this.setState.playList);
     return (
       <React.Fragment>
         <h2>Todas las canciones</h2>
-        {/* <Filtro filtrar={(texto) => this.filtrar(texto)} /> */}
+
+        <Filtro filtrar={(texto) => this.filtrar(texto)} />
+
         <section>
-          {this.state.canciones.map((cancion, index) => (
-            <CancionCard key={index} data={cancion} />
-          ))}
+          {
+            this.state.canciones.length > 0 ?
+              this.state.cancionesFiltradas === null ?
+                this.state.canciones.map((cancion, index) => (
+                  <CancionCard key={index} data={cancion} />
+                )) :
+                this.state.cancionesFiltradas.map((cancion, index) => (
+                  <CancionCard key={index} data={cancion} />
+                )) :
+                null
+          }
+          
           <button onClick={() => this.showMore()}>Mostrar más</button>
         </section>
       </React.Fragment>
