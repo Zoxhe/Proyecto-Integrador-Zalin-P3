@@ -7,6 +7,7 @@ class DetalleCancion extends Component {
         this.state = { // this es un objeto literal, state es una propiedad a la cual le asignas un objeto literal con propiedades y valores.
             favsMessage: "Agregar a favoritos",
             data: null,
+            claseTitle: "hide",
         }
     }
     componentDidMount() {
@@ -81,8 +82,34 @@ class DetalleCancion extends Component {
         localStorage.setItem('favoritos', favoritosToString);
 
         console.log(localStorage);
+    
 
     }
+    mostrarYOcultarTitulo(){
+        if(this.state.claseTitle == "show") {//si es true la cambio a false
+            console.log('es true');
+            this.setState({claseTitle: 'hide'}, () => console.log(this.state))
+        } else {//si no es true, es porque es false, y la cambio a true
+            console.log('es false');
+            this.setState({claseTitle: 'show'}, () => console.log(this.state))
+        }
+    }
+
+    manejarMensaje(){
+        console.log(this.state);
+        if(this.state.favsMessage == "Agregar a favoritos"){
+            this.setState({favsMessage: 'Eliminar de favoritos'})
+        } else {
+            this.setState({favsMessage: 'Agregar a favoritos'})
+        }
+    }
+
+    favoritos(id){
+        console.log('entro');
+        this.manejarMensaje();
+        this.props.agregarYsacarDeFavs(id)
+    }
+
     render() {
         return (
             <>
@@ -97,7 +124,11 @@ class DetalleCancion extends Component {
                             <section>
                                 <h1 className="nombreArtista">{this.state.data.name}</h1>
                                 <h1 className="nombreAlbum">{this.state.data.title}</h1>
+                                <p className={this.state.claseTitle}> Titulo: {this.state.data.title} </p>
+                                <p className={this.state.claseTitle}> Duración: {this.state.data.duration} segundos</p>
+                                <p className={this.state.claseTitle}> Ranking: {this.state.data.rank} </p>
                                 <button className="link-detalle" onClick={() => this.agregarYsacarDeFavs(this.state.data.id)}>{this.state.favsMessage}</button>
+                                <p className= "detalle" onClick={() => this.mostrarYOcultarTitulo()} > {this.state.claseTitle == "show" ? "Ocultar" : "Mostrar mas"} {/* si es true muestro el mensaje de ocultar, si es false muestro el mensaje de mostrar*/ } </p>
                             </section>
                             <audio controls>
                                 <source src={this.state.data.preview} type="audio/mpeg" />

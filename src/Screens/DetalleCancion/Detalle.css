@@ -36,3 +36,10 @@
     margin-top: 50px;
     margin-bottom: 50px;
 }
+.show{
+    display: block;
+}
+
+.hide{
+    display: none;
+}

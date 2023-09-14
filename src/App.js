@@ -6,7 +6,7 @@ import React from 'react';
   import {Route, Switch} from 'react-router-dom';
   import DetalleCancion from './Screens/DetalleCancion/DetalleCancion';
   import NotFound from './Screens/NotFound/NotFound'
-  import PlayList from './Screens/PlayList/PlayList';
+
   import DetalleAlbum from './Screens/DetalleAlbum/DetalleAlbum'
   import './App.css';
   import TodasCanciones from './Screens/TodasCanciones/TodasCanciones';
@@ -28,7 +28,7 @@ import React from 'react';
           <Route path='/todasCanciones' component={TodasCanciones}/>
           <Route path='/todosAlbums' component={TodosAlbums}/>
           <Route path='/resultados-busqueda/:busqueda' component={ResultadosBusqueda}/>
-          <Route path='/playlist' component={PlayList}/>
+
           <Route path='' component={NotFound} />
       </Switch>
       <Footer/>
