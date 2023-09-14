@@ -7,7 +7,8 @@ class DetalleAlbum extends Component {
         super(props)
         this.state = {
             favsMessage: "Agregar a favoritos",
-            data: null
+            data: null,
+            claseTitle: "hide",
         }
     }
     componentDidMount() {
@@ -84,6 +85,31 @@ class DetalleAlbum extends Component {
         console.log(localStorage);
 
     }
+    mostrarYOcultarTitulo(){
+        if(this.state.claseTitle == "show") {//si es true la cambio a false
+            console.log('es true');
+            this.setState({claseTitle: 'hide'}, () => console.log(this.state))
+        } else {//si no es true, es porque es false, y la cambio a true
+            console.log('es false');
+            this.setState({claseTitle: 'show'}, () => console.log(this.state))
+        }
+    }
+
+    manejarMensaje(){
+        console.log(this.state);
+        if(this.state.favsMessage == "Agregar a favoritos"){
+            this.setState({favsMessage: 'Eliminar de favoritos'})
+        } else {
+            this.setState({favsMessage: 'Agregar a favoritos'})
+        }
+    }
+
+    favoritos(id){
+        console.log('entro');
+        this.manejarMensaje();
+        this.props.agregarYsacarDeFavs(id)
+    }
+    
     render() {
         return (
             <>
@@ -97,12 +123,14 @@ class DetalleAlbum extends Component {
                         <div className='detalle-album-right'>
                             <section className="info-detalle">
                                 <h1 className="nombreArtista">Artista: {this.state.data.artist.name}</h1>
-                                <ul className="textoDetalle">
+                                <p className={this.state.claseTitle}> <ul className="textoDetalle">
                                     {
                                         this.state.data.tracks.data.map((track, i) => <li key={track.id + i}>{track.title}</li>)
                                     }
-                                </ul>
+                                </ul> </p>
+                                
                                 <button className="link-detalle" onClick={() => this.agregarYsacarDeFavs(this.state.data.id)}>{this.state.favsMessage}</button>
+                                <p className= "detalle" onClick={() => this.mostrarYOcultarTitulo()} > {this.state.claseTitle == "show" ? "Ocultar" : "Mostrar mas"} {/* si es true muestro el mensaje de ocultar, si es false muestro el mensaje de mostrar*/ } </p>
                             </section>
                         </div>
                     </article> :

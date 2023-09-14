@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import CancionCard from '../../Components/CancionCard/CancionCard';
-
+import { Link } from 'react-router-dom';
 import './Home.css';
 
 class Home extends Component {
@@ -103,7 +103,8 @@ class Home extends Component {
                 </section>
                 <div className="tituloHome">
                     <h2>ALBUMS</h2>
-                    <a className='otro'href="/todosAlbums">Ver todas</a> {/* LINK TO */}
+                    <h2 className='otro'><Link to="/todosAlbums">Ver todas</Link></h2> {/* LINK TO */}
+                    
                 </div>
 
                 <section className="sectionHome canciones_album">

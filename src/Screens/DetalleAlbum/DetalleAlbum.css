@@ -18,3 +18,11 @@
     box-shadow: 7px 7px 7px #830A0A;
     width: 300px;
 }
+
+.show{
+    display: block;
+}
+
+.hide{
+    display: none;
+}
