@@ -88,7 +88,7 @@ class DetalleCancion extends Component {
             <>
             {
                 this.state.data !== null ?
-                    <article className="detalle-card">
+                    <article className="detalle-cancion-card">
                         <h1 className="nombreCancion">{this.state.data.title}</h1>
                         <img className="imagen" src={"https://e-cdns-images.dzcdn.net/images/cover/" + this.state.data.md5_image + "/250x250-000000-80-0-0.jpg"} alt=""/>
                         <section>

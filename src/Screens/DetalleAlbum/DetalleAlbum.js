@@ -93,11 +93,11 @@ class DetalleAlbum extends Component {
                         <div className='detalle-card-left'>
                             <h1 className="nombreCancion">{this.state.data.title}</h1>
                             <img className="imagen" src={this.state.data.cover_big} alt="" />
-                            <h1 className="nombreArtista">Artista: {this.state.data.artist.name}</h1>
                         </div>
                         <div className='detalle-card-right'>
                             <section className="info-detalle">
-                                <ul>
+                            <h1 className="nombreArtista">Artista: {this.state.data.artist.name}</h1>
+                                <ul className="textoDetalle">
                                     {
                                         this.state.data.tracks.data.map((track, i) => <li key={track.id + i}>{track.title}</li>)
                                     }
