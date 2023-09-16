@@ -44,7 +44,40 @@ class TodasCanciones extends Component {
       cancionesFiltradas: cancionesFiltradas //actualizamos el dato y lo cargamos al estado
     })
   }
+  agregarYsacarDeFavs(id) {
+    let favoritos = [];
+    let recuperoStorage = localStorage.getItem('favoritos')
 
+    if (recuperoStorage !== null) {
+        let favoritosToArray = JSON.parse(recuperoStorage); 
+        favoritos = favoritosToArray
+    }
+
+    if (favoritos.includes(id)) {
+
+        favoritos = favoritos.filter(unId => unId !== id);
+
+
+        this.setState({
+            favsMessage: 'Agregar a favoritos'
+        })
+
+    } else {
+        favoritos.push(id);
+
+        this.setState({
+            favsMessage: 'Quitar de favoritos'
+        })
+    }
+
+
+
+    let favoritosToString = JSON.stringify(favoritos);
+    localStorage.setItem('favoritos', favoritosToString);
+
+    console.log(localStorage);
+
+}
   render() {
     return (
       <React.Fragment>
@@ -57,10 +90,10 @@ class TodasCanciones extends Component {
             this.state.canciones.length > 0 ?
               this.state.cancionesFiltradas === null ?
                 this.state.canciones.map((cancion, index) => (
-                  <CancionCard key={index} data={cancion} />
+                  <CancionCard redirigir={'unaCancion'} key={index} data={cancion} agregarYsacarDeFavs={(id) => this.agregarYsacarDeFavs(id)} />
                 )) :
                 this.state.cancionesFiltradas.map((cancion, index) => (
-                  <CancionCard key={index} data={cancion} />
+                  <CancionCard redirigir={'unaCancion'} key={index} data={cancion} agregarYsacarDeFavs={(id) => this.agregarYsacarDeFavs(id)} />
                 )) :
                 null
           }

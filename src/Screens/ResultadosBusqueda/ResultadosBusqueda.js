@@ -45,6 +45,41 @@ class ResultadosBusqueda extends Component {
         }
 
     }
+    agregarYsacarDeFavs(id) {
+        let favoritos = [];
+        let recuperoStorage = localStorage.getItem('favoritos')
+
+        if (recuperoStorage !== null) {
+            let favoritosToArray = JSON.parse(recuperoStorage); 
+            favoritos = favoritosToArray
+        }
+
+        if (favoritos.includes(id)) {
+    
+            favoritos = favoritos.filter(unId => unId !== id);
+
+
+            this.setState({
+                favsMessage: 'Agregar a favoritos'
+            })
+
+        } else {
+            favoritos.push(id);
+
+            this.setState({
+                favsMessage: 'Quitar de favoritos'
+            })
+        }
+
+
+
+        let favoritosToString = JSON.stringify(favoritos);
+        localStorage.setItem('favoritos', favoritosToString);
+
+        console.log(localStorage);
+
+    }
+
 
     render() {
         return (
@@ -57,7 +92,7 @@ class ResultadosBusqueda extends Component {
                         <li>Cargando...</li> :
                         this.state.data.length === 0 ?
                         <li>No hay resultados para su búsqueda</li> :
-                        this.state.data.data.map((track, index) => <CancionCard key={index} data={track} />)
+                        this.state.data.data.map((track, index) => <CancionCard redirigir={'unaCancion'}  key={index} data={track} link={track.id} agregarYsacarDeFavs={(id) => this.agregarYsacarDeFavs(id)} />)
                     }
                 </ul>
             </div>

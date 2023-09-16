@@ -89,7 +89,7 @@ class Favoritos extends Component {
                 <section className="canciones_album">
                     {this.state.datos.map( (cancion, indice) => {
                             return(
-                                <CancionCard key={indice} data={cancion} agregarYsacarDeFavs={(id) => this.agregarYsacarDeFavs(id)}  />
+                                <CancionCard redirigir={'unaCancion'} key={indice} data={cancion} agregarYsacarDeFavs={(id) => this.agregarYsacarDeFavs(id)}  />
                             )
                         })
                     }

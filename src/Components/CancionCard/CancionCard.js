@@ -49,6 +49,7 @@
 
         favoritos(id){
             console.log('entro');
+            console.log(id)
             this.manejarMensaje();
             this.props.agregarYsacarDeFavs(id)
         }
