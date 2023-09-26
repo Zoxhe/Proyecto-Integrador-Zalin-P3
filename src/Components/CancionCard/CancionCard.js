@@ -13,10 +13,10 @@
         }
         componentDidMount(){
             let favoritos = [];
-            let recuperoStorage = localStorage.getItem('favoritos')
+            let recuperoStorage = localStorage.getItem('favoritos') // buscamos la info de favoritos que esta en local storage pq ya definimos la funcion de agregar a favoritos en otro lado y la info se guardo
 
-            if(recuperoStorage !== null){
-                let favoritosToArray = JSON.parse(recuperoStorage);
+            if(recuperoStorage !== null){ //encontro algo
+                let favoritosToArray = JSON.parse(recuperoStorage); //
                 favoritos = favoritosToArray
             }
 
