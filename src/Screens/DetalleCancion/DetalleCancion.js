@@ -40,35 +40,36 @@ class DetalleCancion extends Component {
 
     }
 
-    agregarYsacarDeFavs(id) {
-        //si el id esta en el array debe sacarlo y si no esta, debe agregarlo
-        let favoritos = [];
-        let recuperoStorage = localStorage.getItem('favoritos') //biscamos la info del localStorage
+    agregarYsacarDeFavs(id) {//si el id esta en el array debe sacarlo y si no esta, debe agregarlo
+        
+        let favoritos = []; //creamos array favoritos
+        let recuperoStorage = localStorage.getItem('favoritos') //buscamos la info del localStorage
 
-        if (recuperoStorage !== null) {
+        if (recuperoStorage !== null) { //si encontro algo
             let favoritosToArray = JSON.parse(recuperoStorage); //no nos sirve en JSON, lo pasamos a array
-            favoritos = favoritosToArray //guardamos eso en favoritos
+            favoritos = favoritosToArray //guardamos eso en el array de favoritos
         }
 
         //preguntemos si el id ya está en el array o no
         //includes retorna un booleano.
         if (favoritos.includes(id)) {
-            //si el array esta lo queremos sacar (clase ale)
-            //luego mostrar un cambio al usuario en la pantalla
+            //si el id esta en el array, lo queremos SACAR (clase ale)
+
             //usamos filter para sacar el elemento del array pero nos deja un array nuevo --> guardamos ese aray en la variable favoritos
-
-            favoritos = favoritos.filter(unId => unId !== id); //id = this.props.data.id
-            //unId es el parametro
-            //mostar al usuario un nuevo texto: agregar a favoritos
-
-
+        
+            favoritos = favoritos.filter(unId => unId !== id); 
+            
+            //Estamos dejando en el array todos los ids que sean diferentes al que estamos usando
+            //me queda un array con todos los mismos ids de antes menos el que estamos usando
+            //luego mostrar un cambio al usuario en la pantalla: agregar a favoritos
+           
             this.setState({
                 favsMessage: 'Agregar a favoritos'
             })
 
-        } else {
+        } else { //si el id NO esta en el array, mostar un texto diferente al usuario
             favoritos.push(id);
-            //mostar un texto diferente al usuario. Quitar de favs
+            
             this.setState({
                 favsMessage: 'Quitar de favoritos'
             })
@@ -76,7 +77,7 @@ class DetalleCancion extends Component {
 
 
 
-        let favoritosToString = JSON.stringify(favoritos);
+        let favoritosToString = JSON.stringify(favoritos); //lo convertimos en JSON para pasarlo a localStorage
         localStorage.setItem('favoritos', favoritosToString);
 
         console.log(localStorage);
