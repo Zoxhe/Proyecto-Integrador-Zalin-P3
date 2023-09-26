@@ -61,8 +61,8 @@ class DetalleCancion extends Component {
             //unId es el parametro
             //mostar al usuario un nuevo texto: agregar a favoritos
 
-            if (this.props.borrar) {
-                this.props.borrar(id)
+            if (this.props) {
+                this.props(id)
             } else {
                 this.setState({
                     favsMessage: 'Agregar a favoritos'
