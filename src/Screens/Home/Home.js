@@ -22,7 +22,7 @@ class Home extends Component {
                     topCanciones: datos.data
                 })
                 console.log("CANCIONES")
-                console.log(datos.data);
+                console.log(datos.data); //data es el parametro del objeto literal con toda la info de las canciones
             })
             .catch(error => console.log(error))
 

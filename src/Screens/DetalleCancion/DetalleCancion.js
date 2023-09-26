@@ -3,7 +3,7 @@ import './Detalle.css';
 
 class DetalleCancion extends Component {
     constructor(props) { //va a contener la info del estado inicial de un componente y controlar las props
-        super(props) //le pasa al componente toda la lógica del component
+        super(props) //funcion necesaria para poder utilizar las props
         this.state = { // this es un objeto literal, state es una propiedad a la cual le asignas un objeto literal con propiedades y valores.
             favsMessage: "Agregar a favoritos",
             data: null,
@@ -16,7 +16,7 @@ class DetalleCancion extends Component {
 
         fetch(`https://thingproxy.freeboard.io/fetch/https://api.deezer.com/track/${id}`)
             .then(response => response.json())
-            .then(datos => {
+            .then(datos => { //escribimos codigo que se va a ejecutar sobre la informacion de la api
                 this.setState({
                     data: datos
                 }, () => console.log(this.state))
@@ -36,7 +36,7 @@ class DetalleCancion extends Component {
             this.setState({ // permite actualizar la indo del OL de un  componente, cuando se modifica se vuvle a renderizar
                 favsMessage: 'Quitar de favoritos'
             }, console.log(this.state.favsMessage))
-        }
+        } //aca ya se sabe con que id estamos trabajando --> no necesitamos hacer todo lo que se viene
 
     }
 
@@ -53,7 +53,7 @@ class DetalleCancion extends Component {
         //preguntemos si el id ya está en el array o no
         //includes retorna un booleano.
         if (favoritos.includes(id)) {
-            //si el id esta en el array, lo queremos SACAR (clase ale)
+            //si el id esta en el array, lo queremos SACAR y mostrar agregar a favs (clase ale)
 
             //usamos filter para sacar el elemento del array pero nos deja un array nuevo --> guardamos ese aray en la variable favoritos
         
@@ -67,7 +67,7 @@ class DetalleCancion extends Component {
                 favsMessage: 'Agregar a favoritos'
             })
 
-        } else { //si el id NO esta en el array, mostar un texto diferente al usuario
+        } else { //si el id NO esta en el array, lo agregamos y mostramos un texto diferente
             favoritos.push(id);
             
             this.setState({

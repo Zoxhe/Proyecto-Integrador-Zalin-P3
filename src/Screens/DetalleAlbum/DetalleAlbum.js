@@ -13,7 +13,7 @@ class DetalleAlbum extends Component {
     }
     componentDidMount() {
 
-        const id = this.props.match.params.id;
+        const id = this.props.match.params.id; //capturando la info que viaja por la ruta parametrizada
 
         fetch(`https://thingproxy.freeboard.io/fetch/https://api.deezer.com/album/${id}`)
             .then(response => response.json())
@@ -35,10 +35,10 @@ class DetalleAlbum extends Component {
         }
 
         if (favoritos.includes(id)) {
-            this.setState({ // permite actualizar la indo del OL de un  componente, cuando se modifica se vuvle a renderizar
+            this.setState({ // permite actualizar la info del OL de un  componente, cuando se modifica se vuvle a renderizar
                 favsMensaje: "Quitar de favoritos"
             })
-        }
+        } //aca ya se sabe con que id estamos trabajando --> no necesitamos hacer todo lo que se viene
 
 
     }
@@ -70,7 +70,7 @@ class DetalleAlbum extends Component {
                 favsMessage: 'Agregar a favoritos'
             })
 
-        } else { //si el id NO esta en el array, mostar un texto diferente al usuario
+        } else { //si el id NO esta en el array, lo agregamos y mostramos un texto diferente
             favoritos.push(id);
             
             this.setState({

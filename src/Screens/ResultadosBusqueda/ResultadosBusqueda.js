@@ -4,7 +4,7 @@ import CancionCard from '../../Components/CancionCard/CancionCard';
 
 import './ResultadosBusqueda.css';
 
-class ResultadosBusqueda extends Component {
+class ResultadosBusqueda extends Component { //React Router Dom Rutas parametrizadas
     constructor(props) {
         super(props);
         this.state = {

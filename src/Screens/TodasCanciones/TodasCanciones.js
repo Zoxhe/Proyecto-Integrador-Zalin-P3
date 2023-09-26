@@ -15,7 +15,7 @@ class TodasCanciones extends Component {
 
   fetchSongs() {
     fetch(
-      `https://thingproxy.freeboard.io/fetch/https://api.deezer.com/chart/0/tracks&limit=${this.state.limit}`
+      `https://thingproxy.freeboard.io/fetch/https://api.deezer.com/chart/0/tracks&limit=${this.state.limit}` //limitamos la cantidad de canciones que devuelve a 5
     )
       .then((res) => res.json())
       .then((data) =>

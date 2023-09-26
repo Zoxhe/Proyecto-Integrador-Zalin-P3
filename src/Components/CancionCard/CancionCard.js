@@ -12,15 +12,15 @@
             };
         }
         componentDidMount(){
-            let favoritos = [];
-            let recuperoStorage = localStorage.getItem('favoritos') // buscamos la info de favoritos que esta en local storage pq ya definimos la funcion de agregar a favoritos en otro lado y la info se guardo
+            let favoritos = []; //creamos array de favoritos
+            let recuperoStorage = localStorage.getItem('favoritos') // buscamos la info de favoritos que esta en local storage 
 
             if(recuperoStorage !== null){ //encontro algo
-                let favoritosToArray = JSON.parse(recuperoStorage); //
-                favoritos = favoritosToArray
+                let favoritosToArray = JSON.parse(recuperoStorage); //lo pasamos a array
+                favoritos = favoritosToArray //guardamos
             }
 
-            if(favoritos.includes(this.props.data.id)){
+            if(favoritos.includes(this.props.data.id)){ 
                 this.setState({
                     favsMessage: 'Eliminar de favoritos'
                 })
